@@ -1,3 +1,4 @@
 language: java
-
-script: ant build
+branches:
+  only:
+    - master
