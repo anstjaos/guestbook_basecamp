@@ -13,8 +13,7 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
-<P>  Hello !! </P>
-<P>  한글이 나옵니다!! </P>
+<P> ${popItList[0].id}</P>
+<P> ${popItList[0].password } </P>
 </body>
 </html>
