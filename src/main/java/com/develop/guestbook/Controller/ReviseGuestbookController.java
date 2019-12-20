@@ -1,6 +1,10 @@
 package com.develop.guestbook.Controller;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ReviseGuestbookController {
@@ -20,5 +25,14 @@ public class ReviseGuestbookController {
 		logger.info("Welcome! The client locale is {}.", locale);
 		
 		return "reviseGuestbook";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST) 
+	public ModelAndView update(HttpServletRequest req) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("email", req.getParameter("email"));
+		
+		ModelAndView mv = new ModelAndView("redirect:/");
+		return mv;
 	}
 }
