@@ -13,10 +13,42 @@
 	window.onpopstate=function(event) {
 		location.href="/guestbook/";
 	};
+	
+	function vaildate() {
+		var regularExpression = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/
+
+		var email = document.getElementById("email");
+		var contents = document.getElementById("contents");
+		
+		if(email.value == "") {
+			alert("이메일을 입력해주세요");
+			email.focus();
+			return false;
+		}
+		
+		if(form_guestbookWrite.password.value == "") {
+			alert("비밀번호를 입력해주세요");
+			form_guestbookWrite.password.focus();
+			return false;
+		}
+		
+		if(contents.value == "") {
+			alert("본문을 입력해주세요");
+			contents.focus();
+			return false;
+		}
+		
+		if(regularExpression.test(email.value) == false) {
+			alert("올바른 이메일 형태가 아닙니다");
+			email.focus();
+			return false;
+		}
+		return true;
+	}
 </script>
 <body>
 	<h1>글 등록 페이지</h1>
-	<form name="form_guestbookWrite" id="form_guestbookWrite" method="post" action="/guestbook/write" >
+	<form name="form_guestbookWrite" onsubmit="return vaildate();" id="form_guestbookWrite" method="post" action="/guestbook/write" >
 		<table>
 			<caption>방명록 작성</caption>
 			

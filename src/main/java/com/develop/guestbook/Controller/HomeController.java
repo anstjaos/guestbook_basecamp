@@ -1,6 +1,5 @@
 package com.develop.guestbook.Controller;
 
-import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Resource;
@@ -12,8 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.develop.guestbook.DAO.PopItDAO;
-import com.develop.guestbook.Service.PopItService;
+import com.develop.guestbook.Service.GuestbookService;
 
 /**
  * Handles requests for the application home page.
@@ -21,17 +19,14 @@ import com.develop.guestbook.Service.PopItService;
 @Controller
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@Resource(name="com.develop.guestbook.service.PopItServiceImpl")
-	private PopItService popItServiceImpl;
+	@Resource(name="com.develop.guestbook.service.GuestbookServiceImpl")
+	private GuestbookService guestbookServiceImpl;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		List<PopItDAO> popItMapper = popItServiceImpl.selectListService();
-		model.addAttribute("popItList", popItMapper );
 		
 		return "home";
 	}

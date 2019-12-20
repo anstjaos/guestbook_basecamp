@@ -16,12 +16,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
-	   		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	  		<property name="url" value="jdbc:mysql://127.0.0.1:3306/board?verifyServerCertificate=false&amp;autoReconnect=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
-	   		<property name="username" value="root" />
-	   		<property name="password" value="1234" />
-		</bean>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+	   	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	  	<property name="url" value="jdbc:mysql://127.0.0.1:3306/guestbook?verifyServerCertificate=false&amp;autoReconnect=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
+	   	<property name="username" value="root" />
+	   	<property name="password" value="1234" />
+	</bean>
 		
 	<!-- SESSIONFACTORY 설정 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -30,7 +30,7 @@
 		<property name="mapperLocations">
 			<list>
                                  <!-- 해당 경로를 통해 xml을 읽어옵니다. -->
-				<value>/resources/mappers/*.xml</value>
+				<value>/resources/mappers/GuestbookMapper.xml</value>
 			</list>
 		</property>
 	</bean>

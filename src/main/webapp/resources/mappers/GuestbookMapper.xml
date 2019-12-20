@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+<mapper namespace="com.develop.guestbook.Mapper.GuestbookMapper">
+<!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->
+	<select id="getGuestbooks" resultType="com.develop.guestbook.DAO.GuestbookDAO">
+		select * from guestbook
+	</select>
+	
+	<insert id="insertGuestbook" parameterType="com.develop.guestbook.DAO.GuestbookDAO">
+		INSERT INTO guestbook (email, password, contents, writeTime) VALUES(#{email}, #{password}, #{contents}, #{writeTime})
+	</insert>
+</mapper>
