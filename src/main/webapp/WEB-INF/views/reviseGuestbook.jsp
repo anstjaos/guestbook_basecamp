@@ -6,14 +6,10 @@
 %>
 <html>
 <head>
-	<title>Home</title>
+<meta charset="EUC-KR">
+<title>Revise Guest Book</title>
 </head>
 <body>
-	<h1>
-		Hello world!  
-	</h1>
-	<button onclick="location='writeGuestbook'"> 방명록 작성 </button>
-	<button onclick="location='reviseGuestbook'"> 방명록 수정</button>
-
+	<h1>글 수정 페이지</h1>
 </body>
 </html>
