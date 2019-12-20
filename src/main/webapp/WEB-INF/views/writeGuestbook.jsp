@@ -37,7 +37,7 @@
 			contents.focus();
 			return false;
 		}
-		
+	
 		if(regularExpression.test(email.value) == false) {
 			alert("올바른 이메일 형태가 아닙니다");
 			email.focus();

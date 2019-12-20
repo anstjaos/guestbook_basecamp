@@ -3,6 +3,7 @@ package com.develop.guestbook.Controller;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -32,9 +33,17 @@ public class WriteGuestbookController {
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public ModelAndView write(HttpServletRequest req) {
+	public ModelAndView write(HttpServletRequest req, Model model) {
 		String email = req.getParameter("email");
-		
+		String regExp = "^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$";
+		if(Pattern.matches(regExp, email)==false) {
+			ModelAndView redirectView = new ModelAndView();
+			
+			redirectView.addObject("msg", "이메일 형식이 올바르지 않습니다");
+			redirectView.addObject("url", "/guestbook/writeGuestbook");
+			redirectView.setViewName("redirect");
+			return redirectView;
+		}
 		GuestbookDAO guestbook = new GuestbookDAO(email, req.getParameter("password"), req.getParameter("contents"));
 		
 		
