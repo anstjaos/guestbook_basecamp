@@ -7,13 +7,14 @@ public class GuestbookDAO {
 	private String email;
 	private String password;
 	private String contents;
-	private Date writeTime;
-	private Date reviseTime;
+	private String writeTime;
+	private String reviseTime;
 	
-	public GuestbookDAO(String email, String password, String contents){
+	public GuestbookDAO(String email, String password, String contents, String writeTime){
 		this.email = email;
 		this.password = password;
 		this.contents = contents;
+		this.writeTime = writeTime;
 	}
 	
 	public void setId(int id) {
@@ -32,11 +33,11 @@ public class GuestbookDAO {
 		this.contents = contents;
 	}
 	
-	public void setWriteTime(Date writeTime) {
+	public void setWriteTime(String writeTime) {
 		this.writeTime = writeTime;
 	}
 	
-	public void setReviseTime(Date reviseTime) {
+	public void setReviseTime(String reviseTime) {
 		this.reviseTime = reviseTime;
 	}
 	
@@ -56,11 +57,11 @@ public class GuestbookDAO {
 		return contents;
 	}
 	
-	public Date getWriteTime() {
+	public String getWriteTime() {
 		return writeTime;
 	}
 	
-	public Date getReviseTime() {
+	public String getReviseTime() {
 		return reviseTime;
 	}
 }

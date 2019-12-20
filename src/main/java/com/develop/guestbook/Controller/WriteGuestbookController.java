@@ -1,5 +1,7 @@
 package com.develop.guestbook.Controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.develop.guestbook.DAO.GuestbookDAO;
 import com.develop.guestbook.Service.GuestbookService;
+import com.develop.guestbook.Security.SecurityUtil;
 
 @Controller
 public class WriteGuestbookController {
@@ -44,8 +47,15 @@ public class WriteGuestbookController {
 			redirectView.setViewName("redirect");
 			return redirectView;
 		}
-		GuestbookDAO guestbook = new GuestbookDAO(email, req.getParameter("password"), req.getParameter("contents"));
+		Date now = new Date();
+		String pattern = "yyyy-MM-dd HH:mm:ss";
+		String date = new SimpleDateFormat(pattern).format(now);
 		
+		SecurityUtil securityUtil = new SecurityUtil();
+		String encryptPwd = securityUtil.encryptSHA256(req.getParameter("password"));
+		
+		GuestbookDAO guestbook = new GuestbookDAO(email, encryptPwd, req.getParameter("contents"), date);
+		guestbookServiceImpl.insertGuestbook(guestbook);
 		
 		ModelAndView mv = new ModelAndView("redirect:/");
 		return mv;
