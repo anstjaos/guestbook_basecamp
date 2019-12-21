@@ -33,6 +33,9 @@ public class ReviseGuestbookController {
 		SecurityUtil securityUtil = new SecurityUtil();
 		String encryptPwd = securityUtil.encryptSHA256(req.getParameter("inputPwd"));
 		
+		System.out.println("ecrypt " + encryptPwd);
+		System.out.println("pwd " +req.getParameter("password"));
+		
 		if(!encryptPwd.equals(req.getParameter("password"))) {
 			model.addAttribute("msg", "비밀번호가 일치하지 않습니다");
 			model.addAttribute("url", "/guestbook/");

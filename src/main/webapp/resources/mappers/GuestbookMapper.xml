@@ -6,7 +6,7 @@
 <mapper namespace="com.develop.guestbook.Mapper.GuestbookMapper">
 <!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->
 	<select id="getGuestbooks" resultType="com.develop.guestbook.DAO.GuestbookDAO">
-		select * from guestbook
+		select * from guestbook order by writeTime DESC
 	</select>
 	
 	<insert id="insertGuestbook" parameterType="com.develop.guestbook.DAO.GuestbookDAO">

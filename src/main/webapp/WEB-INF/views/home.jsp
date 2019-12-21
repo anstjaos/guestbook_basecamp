@@ -27,7 +27,7 @@
 			<input type="hidden" name="email" id="email" value="${guestbook.email}"></input>
 			<input type="hidden" name="contents"  id="contents" value="${guestbook.contents}"></input>
 			<input type="hidden" name="inputPwd" id="inputPwd"></input>
-			<input type="hidden" name="password" id="password"></input>
+			<input type="hidden" name="password" id="password" value="${guestbook.password}"></input>
 			${guestbook.id}&nbsp;${guestbook.email}&nbsp;
 			<table>
 				<tr>
