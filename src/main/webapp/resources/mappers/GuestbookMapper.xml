@@ -12,4 +12,8 @@
 	<insert id="insertGuestbook" parameterType="com.develop.guestbook.DAO.GuestbookDAO">
 		INSERT INTO guestbook (email, password, contents, writeTime) VALUES(#{email}, #{password}, #{contents}, #{writeTime})
 	</insert>
+	
+	<update id="updateGuestbook" parameterType="com.develop.guestbook.DAO.GuestbookDAO">
+		UPDATE guestbook SET contents=#{contents} where id=#{id}
+	</update>
 </mapper>

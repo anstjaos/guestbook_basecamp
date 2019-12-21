@@ -25,7 +25,6 @@ public class GuestbookServiceImpl implements GuestbookService {
 
 	@Override
 	public void updateGuestbook(GuestbookDAO guestbook) {
-		// TODO Auto-generated method stub
-		
+		guestbookMapper.updateGuestbook(guestbook);
 	}
 }

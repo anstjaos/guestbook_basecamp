@@ -8,6 +8,12 @@
 <head>
 	<title>Home</title>
 </head>
+<script>
+	function checkPwd() {
+		var inputPwd = prompt("비밀번호를 입력하세요"+"");
+		document.getElementById("inputPwd").value = inputPwd;
+	}
+</script>
 <body>
 	<h1>
 		Hello world!  
@@ -15,21 +21,24 @@
 	<button onclick="location='writeGuestbook'"> 방명록 작성 </button>
 	<button onclick="location='reviseGuestbook'"> 방명록 수정</button>
 	
-	<table border="5" bordercolor="Lightgray" align="center">
-		<tr>
-			<td width="50px" align="center">email</td>
-			<td align="center">내용</td>
-			<td align="center">작성일</td>
-			<td align="center">수정일</td>
-		</tr>
-		<c:forEach items="${guestbookList}" var="guestbook">
-			<tr>
-				<td>${guestbook.email}</td>
-				<td>${guestbook.contents }</td>
-				<td>${guestbook.writeTime }</td>
-				<td>${guestbook.reviseTime }</td>
-			</tr>
-		</c:forEach>
-	</table>
+	<c:forEach items="${guestbookList}" var="guestbook" varStatus="status">
+		<form method="post" onsubmit="return checkPwd();" id="form_${status.index}" action="/guestbook/reviseGuestbook">
+			<input type="hidden" name="id" id="id" value="${guestbook.id}"></input>
+			<input type="hidden" name="email" id="email" value="${guestbook.email}"></input>
+			<input type="hidden" name="contents"  id="contents" value="${guestbook.contents}"></input>
+			<input type="hidden" name="inputPwd" id="inputPwd"></input>
+			<input type="hidden" name="password" id="password"></input>
+			${guestbook.id}&nbsp;${guestbook.email}&nbsp;
+			<table>
+				<tr>
+					<td width="50px"> ${guestbook.contents }</td>
+				</tr>
+			</table>
+			작성 시간 : ${guestbook.writeTime }<br>
+			수정 시간 : ${guestbook.reviseTime }<br>
+			<input type="submit" value="수정하기"/>
+			<hr>
+		</form> 
+	</c:forEach>
 </body>
 </html>

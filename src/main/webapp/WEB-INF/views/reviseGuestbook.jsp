@@ -14,26 +14,35 @@
 	window.onpopstate=function(event) {
 		location.href="/guestbook/";
 	};
+	
+	function checkContents() {
+		var contents = document.getElementById("contents");
+		
+		if(contents.value == "") {
+			alert("내용을 입력해주세요");
+			contents.focus();
+			return false;
+		}
+		
+		return true;
+	}
 </script>
 	<body>
 		<h1>글 수정 페이지</h1>
-		<form name="form_guestbookRevise" id="form_guestbookRevise" method="post" action="/guestbook/update" >
+		<form name="form_guestbookRevise" onsubmit="return checkContents();" id="form_guestbookRevise" method="post" action="/guestbook/update" >
 			<table>
-				<caption>방명록 작성</caption>
-				
-				<tbody>
-					<tr>
-						<td colspan="2" class="view_text">
-							<textarea rows="20" cols="100" title="내용" id="contents" name="contents"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">이메일</th>
-						<td><input type="text" id="email" name="email" size="40"></input></td>
-						<th scope="row">비밀번호</th>
-						<td><input type="password" name="password" size="20"></input></td>
-					</tr>
-				</tbody>
+				<caption>방명록 수정</caption>
+				<tr>
+					<td colspan="2" class="view_text">
+						<textarea rows="20" cols="100" title="내용" id="contents" name="contents">${contents}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">방명록 번호</th>
+					<td>${id}</td>
+					<th scope="row">이메일</th>
+					<td>${email}</td>
+				</tr>
 			</table>
 			
 			<input type="submit" name="submit" value="수정하기" id="submit">
