@@ -14,6 +14,6 @@
 	</insert>
 	
 	<update id="updateGuestbook" parameterType="com.develop.guestbook.DAO.GuestbookDAO">
-		UPDATE guestbook SET contents=#{contents} where id=#{id}
+		UPDATE guestbook SET contents=#{contents}, reviseTime=#{reviseTime} WHERE id=#{id}
 	</update>
 </mapper>

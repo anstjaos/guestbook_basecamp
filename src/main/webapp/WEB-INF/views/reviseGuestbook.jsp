@@ -30,6 +30,7 @@
 	<body>
 		<h1>글 수정 페이지</h1>
 		<form name="form_guestbookRevise" onsubmit="return checkContents();" id="form_guestbookRevise" method="post" action="/guestbook/update" >
+			<input type="hidden" id="id" name="id" value="${id}"/>
 			<table>
 				<caption>방명록 수정</caption>
 				<tr>

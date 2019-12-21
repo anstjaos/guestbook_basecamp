@@ -18,6 +18,12 @@ public class GuestbookDAO {
 		this.writeTime = writeTime;
 	}
 	
+	public GuestbookDAO(int id, String contents, String reviseTime) {
+		this.id = id;
+		this.contents = contents;
+		this.reviseTime = reviseTime;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
