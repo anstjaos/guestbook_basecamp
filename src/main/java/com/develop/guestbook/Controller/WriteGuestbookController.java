@@ -47,6 +47,7 @@ public class WriteGuestbookController {
 			redirectView.setViewName("redirect");
 			return redirectView;
 		}
+		
 		Date now = new Date();
 		String pattern = "yyyy-MM-dd HH:mm:ss";
 		String date = new SimpleDateFormat(pattern).format(now);

@@ -10,6 +10,7 @@ public class GuestbookDAO {
 	private String writeTime;
 	private String reviseTime;
 	
+	GuestbookDAO() {}
 	public GuestbookDAO(String email, String password, String contents, String writeTime){
 		this.email = email;
 		this.password = password;
