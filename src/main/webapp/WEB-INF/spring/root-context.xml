@@ -30,7 +30,7 @@
 		<property name="mapperLocations">
 			<list>
                                  <!-- 해당 경로를 통해 xml을 읽어옵니다. -->
-				<value>/resources/mappers/GuestbookMapper.xml</value>
+				<value>resources/mappers/GuestbookMapper.xml</value>
 			</list>
 		</property>
 	</bean>
