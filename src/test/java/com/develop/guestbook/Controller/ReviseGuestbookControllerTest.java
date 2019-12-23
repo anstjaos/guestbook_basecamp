@@ -1,8 +1,9 @@
 package com.develop.guestbook.Controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,11 +23,11 @@ import com.develop.guestbook.Service.GuestbookService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @WebAppConfiguration
-public class HomeControllerTest {
+public class ReviseGuestbookControllerTest {
 	@Mock
     GuestbookService guestbookService;
 	@InjectMocks
-    private HomeController homeController;
+    private ReviseGuestbookController reviseGuestbookController;
 
 	@Autowired
 	private WebApplicationContext wac;
@@ -39,11 +40,32 @@ public class HomeControllerTest {
     }
     
 	@Test
-	public void testHomeController() throws Exception {
-		mockMvc
-		.perform(get("/"))
-		.andExpect(status().isOk())
-		.andExpect(forwardedUrl("/WEB-INF/views/home.jsp"));
+	public void correctRevise() throws Exception {
+		this.mockMvc.perform(post("/reviseGuestbook")
+				.param("id", "7")
+				.param("email", "test@test.com")
+				.param("contents", "This is test!")
+				.param("inputPwd", "1234567")
+				.param("password", "14f46d77ea836347705366011f4e25c17d2521f156b4227d0f7db1b96ecfb08b"))
+			.andExpect(forwardedUrl("/WEB-INF/views/reviseGuestbook.jsp"));
 	}
 
+	@Test
+	public void wrongRevise() throws Exception {
+		this.mockMvc.perform(post("/reviseGuestbook")
+				.param("id", "7")
+				.param("email", "test@test.com")
+				.param("contents", "This is test!")
+				.param("inputPwd", "1234567")
+				.param("password", "wrongPwd"))
+			.andExpect(forwardedUrl("/WEB-INF/views/redirect.jsp"));
+	}
+	
+	@Test
+	public void updateGuestbook() throws Exception {
+		this.mockMvc.perform(post("/update")
+				.param("id", "7")
+				.param("contents", "Change contents!"))
+			.andExpect(redirectedUrl("/"));
+	}
 }
