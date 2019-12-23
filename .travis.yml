@@ -4,5 +4,3 @@ before_install:
   - chmod +x mvnw
 
 sudo: true
-
-jdk: oraclejdk8
