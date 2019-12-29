@@ -16,10 +16,9 @@
 </script>
 <body>
 	<h1>
-		Hello world!  
+		어서오세용!
 	</h1>
 	<button onclick="location='writeGuestbook'"> 방명록 작성 </button>
-	<button onclick="location='reviseGuestbook'"> 방명록 수정</button>
 	
 	<c:forEach items="${guestbookList}" var="guestbook" varStatus="status">
 		<form method="post" onsubmit="return checkPwd();" id="form_${status.index}" action="/guestbook/reviseGuestbook">
