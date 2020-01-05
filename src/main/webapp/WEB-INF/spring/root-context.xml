@@ -18,7 +18,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
 	   	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	  	<property name="url" value="jdbc:mysql://127.0.0.1:3306/guestbook?verifyServerCertificate=false&amp;autoReconnect=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
+	  	<property name="url" value="jdbc:mysql://172.30.1.52:3306/guestbook?verifyServerCertificate=false&amp;autoReconnect=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
 	   	<property name="username" value="root" />
 	   	<property name="password" value="1234" />
 	</bean>
